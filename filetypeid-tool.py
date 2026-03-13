@@ -116,7 +116,7 @@ def print_banner():
         print(box_row_center(line, w, text_color=col))
     print(box_row("", w))
     now = datetime.now().strftime("  %Y-%m-%d  %H:%M:%S")
-    version = "  v1.0  |  Cybersecurity Portfolio Project #1"
+    version = "  v1.0  "
     print(box_row(version, w, text_color=DIM))
     print(box_row(now, w, text_color=DIM))
     print(box_row("", w))
