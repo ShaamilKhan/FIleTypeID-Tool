@@ -1,4 +1,4 @@
-# Magic File Scanner
+## Magic File Scanner
 
 Detects the TRUE file type of any file using magic number analysis.
 Flags disguised malware — e.g. a Windows EXE renamed as vacation_photo.jpeg.
@@ -15,24 +15,56 @@ regardless of what the file extension claims.
 - ASCII terminal UI with live scan animation
 - Scan a single file or an entire folder recursively
 
-## How to Run
+**Run the built-in demo:**
+```bash
 python magic_file_scanner_ui.py --demo
-python magic_file_scanner_ui.py /path/to/folder
-python magic_file_scanner_ui.py suspicious.jpeg -v
+```
+
+**Scan a single file:**
+```bash
+python magic_file_scanner_ui.py suspicious.jpeg
+```
+
+**Scan a folder:**
+```bash
+python magic_file_scanner_ui.py "<path>"
+```
+
+**Scan with verbose mode:**
+```bash
+python magic_file_scanner_ui.py "<path>" -v
+```
 
 ## Example Output
-[ !! ]  vacation_photo.jpeg  [.jpeg]  108 B
+
+**Clean file:**
+```
+[ OK  ]  real_image.png  [.png]  96 B
+Status   | MATCH — File type verified
+Detected | PNG
+Expected | PNG
+```
+
+**Suspicious file (disguised malware):**
+```
+[ !!  ]  vacation_photo.jpeg  [.jpeg]  108 B
 Status   | MISMATCH — POSSIBLE MALWARE DISGUISE
 Detected | EXE/DLL (Windows PE)
 Expected | JPEG
-/!\  WARNING: This is a known malware evasion technique.
+
+  /!\  WARNING: Extension does not match real file content!
+       This is a known malware evasion technique.
+```
+
+**Unknown format:**
+```
+[  ~  ]  readme.txt  [.txt]  88 B
+Status   | NO RULE FOR THIS EXTENSION
+Detected | ELF (Linux binary)
+```
 
 ## Requirements
 - Python 3.10+ (no external libraries needed)
 
 ## Author
 Shaamil Khan A
-```
-*.class
-demo_files/
-.DS_Store
